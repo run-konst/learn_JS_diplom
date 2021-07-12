@@ -475,8 +475,9 @@ template, [hidden] {
     -ms-flex-align: end;
     align-items: flex-end;
     top: 0;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
+    left: -1px;
+    -webkit-transition: top 0.5s;
+    transition: top 0.5s;
 }
 
 .header-contacts__phone-number-accord a {
@@ -487,13 +488,12 @@ template, [hidden] {
 
 .header-contacts__arrow {
     cursor: pointer;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    padding: 5px;
 }
 
 .header-contacts__arrow img {
-    margin-top: 12px;
-    margin-left: 5px;
 }
 
 .header-contacts__messagers {
