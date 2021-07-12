@@ -38,8 +38,10 @@
 				<div class="menu-phone-icon">
 					<a href="tel:+79123456789"><img src="./images/header/phoneIcon.svg" alt="phoneIcon"></a>
 				</div>
-				<span class="menu__title">Меню </span><img class="menu__icon" src="./images/header/menuIcon.svg" alt="menuIcon">
-			</div><!-- menu --></header><!-- header -->
+				<span class="menu__title">Меню </span>
+				<img class="menu__icon" src="./images/header/menuIcon.svg" alt="menuIcon">
+			</div><!-- menu -->
+		</header><!-- header -->
 		<div class="wrapper_middle">
 			<div class="main-title">
 				<div class="row">
@@ -419,13 +421,16 @@
 									fill="#322823"></path>
 						</svg>
 					</div>
-					<div class="link-list link-list-repair desktop-hide"><a>Полный список услуг и цен
-						<svg width="17" height="16" fill="none" viewBox="0 0 17 16" preserveAspectRatio="xMinYMin meet">
-							<path
-									d="M16.207 8.707a1 1 0 0 0 0-1.414L9.843.929A1 1 0 1 0 8.43 2.343L14.086 8l-5.657 5.657a1 1 0 1 0 1.414 1.414l6.364-6.364zM0 9h15.5V7H0v2z"
-									fill="#7F6956"></path>
-						</svg>
-					</a></div><!-- link-list tablet-hide  --></div><!-- /repair-types-slider-wrap -->
+					<div class="link-list link-list-repair desktop-hide">
+						<a class="popup-repair-link">Полный список услуг и цен
+							<svg width="17" height="16" fill="none" viewBox="0 0 17 16" preserveAspectRatio="xMinYMin meet">
+								<path
+										d="M16.207 8.707a1 1 0 0 0 0-1.414L9.843.929A1 1 0 1 0 8.43 2.343L14.086 8l-5.657 5.657a1 1 0 1 0 1.414 1.414l6.364-6.364zM0 9h15.5V7H0v2z"
+										fill="#7F6956"></path>
+							</svg>
+						</a>
+					</div><!-- link-list tablet-hide  -->
+				</div><!-- /repair-types-slider-wrap -->
 				<div class="repair-types-tab">
 					<div class="section-title repair-types-title">Какие виды<br><span>ремонта мы делаем:</span></div>
 					<!-- /.section-title repair-types-title -->
@@ -486,16 +491,21 @@
 							</svg>
 						</div>
 					</div><!-- /.repair-types__nav-wrap -->
-					<div class="link-list link-list-repair mobile-hide tablet-hide"><a>Полный список услуг и цен
-						<div>
-							<svg width="17" height="16" fill="none" viewBox="0 0 18 12" preserveAspectRatio="xMinYMin meet">
-								<path
-										d="M16.207 8.707a1 1 0 0 0 0-1.414L9.843.929A1 1 0 1 0 8.43 2.343L14.086 8l-5.657 5.657a1 1 0 1 0 1.414 1.414l6.364-6.364zM0 9h15.5V7H0v2z"
-										fill="#7F6956"></path>
-							</svg>
-						</div>
-					</a></div><!-- link-list tablet-hide  --></div><!-- /.repair-types-tab --></div><!-- /.row --></div>
-		<!-- /.wrapper_small --></div><!-- /.repair-types -->
+					<div class="link-list link-list-repair mobile-hide tablet-hide">
+						<a class="popup-repair-link">Полный список услуг и цен
+							<div>
+								<svg width="17" height="16" fill="none" viewBox="0 0 18 12" preserveAspectRatio="xMinYMin meet">
+									<path
+											d="M16.207 8.707a1 1 0 0 0 0-1.414L9.843.929A1 1 0 1 0 8.43 2.343L14.086 8l-5.657 5.657a1 1 0 1 0 1.414 1.414l6.364-6.364zM0 9h15.5V7H0v2z"
+											fill="#7F6956"></path>
+								</svg>
+							</div>
+						</a>
+					</div><!-- link-list tablet-hide  -->
+				</div><!-- /.repair-types-tab -->
+			</div><!-- /.row -->
+		</div><!-- /.wrapper_small -->
+	</div><!-- /.repair-types -->
 	<div class="wave-block feedback-block">
 		<div class="wrapper_feedback">
 			<div class="section-title feedback-block__title mobile-hide tablet-hide">Давайте начнем
@@ -1218,24 +1228,30 @@
 
 						<div class="popup-menu-nav__item"><a class="menu-link" href="#faq">часто задаваемые вопросы</a>
 						</div>
-						<div class="link-list link-list-menu mobile-hide"><a class="menu-link no-overflow" href="#">
-							<svg width="17" height="16" fill="none" viewBox="0 0 17 16" xmlns="http://www.w3.org/2000/svg">
-								<path
-										d="M.293 8.707a1 1 0 0 1 0-1.414L6.657.929A1 1 0 0 1 8.07 2.343L2.414 8l5.657 5.657a1 1 0 1 1-1.414 1.414L.293 8.707zM16.5 9H1V7h15.5v2z"
-										fill="#CFB8A4"></path>
-							</svg>
-							Полный список услуг и цен</a></div>
+						<div class="link-list link-list-menu mobile-hide">
+							<a class="menu-link no-overflow popup-repair-link" href="#">
+								<svg width="17" height="16" fill="none" viewBox="0 0 17 16" xmlns="http://www.w3.org/2000/svg">
+									<path
+											d="M.293 8.707a1 1 0 0 1 0-1.414L6.657.929A1 1 0 0 1 8.07 2.343L2.414 8l5.657 5.657a1 1 0 1 1-1.414 1.414L.293 8.707zM16.5 9H1V7h15.5v2z"
+											fill="#CFB8A4"></path>
+								</svg>
+								Полный список услуг и цен
+							</a>
+						</div>
 					</nav>
 				</div>
 				<div class="popup-menu-copyright">Все права защищены © 2021. Политика конфиденциальности</div>
 			</div>
-			<div class="link-list link-list-menu tablet-hide desktop-hide"><a class="menu-link no-overflow" href="#">
-				<svg width="17" height="16" fill="none" viewBox="0 0 17 16" xmlns="http://www.w3.org/2000/svg">
-					<path
-							d="M.293 8.707a1 1 0 0 1 0-1.414L6.657.929A1 1 0 0 1 8.07 2.343L2.414 8l5.657 5.657a1 1 0 1 1-1.414 1.414L.293 8.707zM16.5 9H1V7h15.5v2z"
-							fill="#CFB8A4"></path>
-				</svg>
-				Полный список услуг и цен</a></div>
+			<div class="link-list link-list-menu tablet-hide desktop-hide">
+				<a class="menu-link no-overflow popup-repair-link" href="#">
+					<svg width="17" height="16" fill="none" viewBox="0 0 17 16" xmlns="http://www.w3.org/2000/svg">
+						<path
+								d="M.293 8.707a1 1 0 0 1 0-1.414L6.657.929A1 1 0 0 1 8.07 2.343L2.414 8l5.657 5.657a1 1 0 1 1-1.414 1.414L.293 8.707zM16.5 9H1V7h15.5v2z"
+								fill="#CFB8A4"></path>
+					</svg>
+					Полный список услуг и цен
+				</a>
+			</div>
 		</div>
 	</div>
 	<div class="popup popup-consultation">

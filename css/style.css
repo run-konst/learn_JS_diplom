@@ -493,9 +493,6 @@ template, [hidden] {
     padding: 5px;
 }
 
-.header-contacts__arrow img {
-}
-
 .header-contacts__messagers {
     display: -webkit-box;
     display: -ms-flexbox;
