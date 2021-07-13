@@ -1,9 +1,13 @@
 const faqAccordeon = () => {
     const titles = document.querySelectorAll('.title_block');
-    console.log(titles);
 
     titles.forEach(title => title.addEventListener('click', () => {
-        title.classList.toggle('msg-active');
+        if (title.classList.contains('msg-active')) {
+            title.classList.remove('msg-active');
+            return;
+        }
+        titles.forEach(title => title.classList.remove('msg-active'));
+        title.classList.add('msg-active');
     }));
 };
 

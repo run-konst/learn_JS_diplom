@@ -4449,8 +4449,8 @@ div.wave-block:nth-child(17):after {
     margin-top: 0;
     max-height: 0;
     opacity: 0;
-    -webkit-transform: translate(0, 50%);
-    transform: translate(0, 50%);
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
 }
@@ -4487,12 +4487,29 @@ div.wave-block:nth-child(17):after {
 @media (max-width: 575px) {
     .msg-active ~ .msg {
         max-height: 300px;
+        overflow-y: scroll;
     }
 
     .msg-active ~ .msg ~ .accordion-more {
         display: block;
     }
 }
+
+.msg::-webkit-scrollbar {
+    width: 8px;
+}
+
+.msg::-webkit-scrollbar-track {
+    background: rgba(238, 235, 229, 0.5);
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.msg::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #D6D0C5;
+}
+
 
 .msg p {
     line-height: 25px;
