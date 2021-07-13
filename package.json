@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack --watchw"
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
