@@ -8954,3 +8954,7 @@ strong {
 .slider-dots {
     display: none;
 }
+
+button:disabled {
+    opacity: 0.5;
+}
