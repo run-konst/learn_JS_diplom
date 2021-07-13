@@ -6,6 +6,7 @@ import popupRepair from './modules/popup-repair';
 import popupConsult from './modules/popup-consult';
 import validate from './modules/validate';
 import sendForm from './modules/send-form';
+import popupPrivacy from './modules/popup-privacy';
 
 scroll();
 showHeaderPhone();
@@ -14,3 +15,4 @@ popupRepair();
 popupConsult();
 validate();
 sendForm();
+popupPrivacy();
