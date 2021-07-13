@@ -7,6 +7,7 @@ import popupConsult from './modules/popup-consult';
 import validate from './modules/validate';
 import sendForm from './modules/send-form';
 import popupPrivacy from './modules/popup-privacy';
+import faqAccordeon from './modules/faq-accordeon';
 
 scroll();
 showHeaderPhone();
@@ -16,3 +17,4 @@ popupConsult();
 validate();
 sendForm();
 popupPrivacy();
+faqAccordeon();

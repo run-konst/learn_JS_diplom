@@ -1,8 +1,8 @@
-const popupConfident = () => {
+const popupPrivacy = () => {
     const
         popup = document.querySelector('.popup-privacy'),
         links = document.querySelectorAll('.link-privacy'),
-        closeBtns = popup.querySelector('.close');
+        closeBtns = popup.querySelectorAll('.close');
 
     links.forEach(link => {
         link.addEventListener('click', event => {
@@ -17,4 +17,4 @@ const popupConfident = () => {
     });
 };
 
-export default popupConfident;
+export default popupPrivacy;
