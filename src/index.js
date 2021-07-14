@@ -8,6 +8,7 @@ import validate from './modules/validate';
 import sendForm from './modules/send-form';
 import popupPrivacy from './modules/popup-privacy';
 import faqAccordeon from './modules/faq-accordeon';
+import loadDB from './modules/load-DB';
 
 scroll();
 showHeaderPhone();
@@ -18,3 +19,4 @@ validate();
 sendForm();
 popupPrivacy();
 faqAccordeon();
+loadDB();
