@@ -29,7 +29,7 @@ class Slider {
             direction,
             position,
             infinity,
-            widthSlide: Math.floor(100 / this.slidesToShow)
+            widthSlide: 100 / this.slidesToShow
         };
 
     }
@@ -306,13 +306,13 @@ class Slider {
                 for (let i = 0; i < allResponse.length; i++) {
                     if (widthWindow < allResponse[i]) {
                         this.slidesToShow = this.responsive[i].slideToShow;
-                        this.options.widthSlide = Math.floor(100 / this.slidesToShow);
+                        this.options.widthSlide = 100 / this.slidesToShow;
                         this.setSlideWidth();
                     }
                 }
             } else {
                 this.slidesToShow = slidesToShowDefault;
-                this.options.widthSlide = Math.floor(100 / this.slidesToShow);
+                this.options.widthSlide = 100 / this.slidesToShow;
                 this.setSlideWidth();
             }
             this.checkArrow();

@@ -12,6 +12,7 @@ import loadDB from './modules/load-DB';
 import advantagesPopup from './modules/advantages-popup';
 import repairTypes from './modules/repair-types';
 import documents from './modules/documents';
+import portfolio from './modules/portfolio';
 
 scroll();
 showHeaderPhone();
@@ -26,3 +27,4 @@ loadDB();
 advantagesPopup();
 repairTypes();
 documents();
+portfolio();
