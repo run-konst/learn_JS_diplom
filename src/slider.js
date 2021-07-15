@@ -299,6 +299,9 @@ class Slider {
 
         const checkResponse = () => {
             const widthWindow = window.innerWidth;
+            if (widthWindow > this.initWidth) {
+                return;
+            }
             if (widthWindow < maxResponse) {
                 for (let i = 0; i < allResponse.length; i++) {
                     if (widthWindow < allResponse[i]) {

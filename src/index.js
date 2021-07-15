@@ -11,6 +11,7 @@ import faqAccordeon from './modules/faq-accordeon';
 import loadDB from './modules/load-DB';
 import advantagesPopup from './modules/advantages-popup';
 import repairTypes from './modules/repair-types';
+import documents from './modules/documents';
 
 scroll();
 showHeaderPhone();
@@ -24,3 +25,4 @@ faqAccordeon();
 loadDB();
 advantagesPopup();
 repairTypes();
+documents();

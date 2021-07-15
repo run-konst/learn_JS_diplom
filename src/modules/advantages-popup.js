@@ -17,11 +17,19 @@ const advantagesPopup = () => {
             icons[num].classList.add('active-item');
         };
 
-    icons.forEach(icon => icon.addEventListener('mouseenter', () => {
+    icons.forEach(icon => icon.addEventListener('mouseenter', event => {
+        const row = event.target.closest('.row');
+        if (row) {
+            row.style.zIndex = '1';
+        }
         icon.classList.add('active-item');
         checkPosition(icon);
     }));
-    icons.forEach(icon => icon.addEventListener('mouseleave', () => {
+    icons.forEach(icon => icon.addEventListener('mouseleave', event => {
+        const row = event.target.closest('.row');
+        if (row) {
+            row.removeAttribute('style');
+        }
         icon.classList.remove('active-item');
         icon.classList.remove('rotate-item');
     }));
