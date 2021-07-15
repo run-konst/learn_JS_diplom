@@ -9,6 +9,7 @@ import sendForm from './modules/send-form';
 import popupPrivacy from './modules/popup-privacy';
 import faqAccordeon from './modules/faq-accordeon';
 import loadDB from './modules/load-DB';
+import advantagesPopup from './modules/advantages-popup';
 
 scroll();
 showHeaderPhone();
@@ -20,3 +21,4 @@ sendForm();
 popupPrivacy();
 faqAccordeon();
 loadDB();
+advantagesPopup();

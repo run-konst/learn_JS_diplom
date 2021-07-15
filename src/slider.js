@@ -7,7 +7,7 @@ class Slider {
         infinity = false,
         position = 0,
         slidesToShow = 4,
-        initWidth = document.documentElement.clientWidth,
+        initWidth = window.innerWidth,
         responsive = []
     }) {
         this.main = document.querySelector(main);
@@ -65,17 +65,21 @@ class Slider {
     start() {
         this.addGloClass();
         this.showArrow();
+        this.setSlideWidth();
+        this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
     }
 
     die() {
         this.removeGloClass();
         this.returnSlider();
         this.hideArrow();
+        this.resetSlideWidth();
     }
 
     addGloClass() {
         this.main.classList.add('glo-slider');
         this.wrap.classList.add('glo-slider__wrap');
+        this.wrap.style.transition = `transform 0.5s`;
         for (const slide of this.slides) {
             slide.classList.add('glo-slider__item');
         }
@@ -102,13 +106,11 @@ class Slider {
             
             .glo-slider__wrap {
                 display: flex !important;
-                flex-wrap: nowrap;
-                transition: transform 0.5s !important;
+                flex-wrap: nowrap !important;
                 will-change: transform !important;
             }
             
             .glo-slider__item {
-                flex: 0 0 ${this.options.widthSlide}% !important;
                 margin: auto 0 !important;
             }
             
@@ -137,31 +139,59 @@ class Slider {
         document.head.append(style);
     }
 
+    setSlideWidth() {
+        for (const slide of this.slides) {
+            slide.style.flex = `0 0 ${this.options.widthSlide}%`;
+        }
+    }
+
+    resetSlideWidth() {
+        for (const slide of this.slides) {
+            slide.removeAttribute('style');
+        }
+    }
+
     controlSlider() {
-        this.prev.addEventListener('click', this.prevSlider.bind(this));
-        this.next.addEventListener('click', this.nextSlider.bind(this));
+        this.prev.addEventListener('click', this.prevSlide.bind(this));
+        this.next.addEventListener('click', this.nextSlide.bind(this));
     }
 
-    prevSlider() {
-        if (!this.options.infinity && this.options.position <= 0) {
-            return;
+    prevSlide() {
+        if (!this.options.infinity) {
+            --this.options.position;
+            this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
+            if (this.options.position <= 0) {
+                this.prev.style.display = 'none';
+            }
+            this.next.removeAttribute('style');
+        } else {
+            this.wrap.prepend(this.slides[this.slides.length - 1]);
+            this.wrap.style.transition = `transform 0s`;
+            this.wrap.style.transform = `translateX(-${this.options.widthSlide}%)`;
+            setTimeout(() => {
+                this.wrap.style.transition = `transform 0.5s`;
+                this.wrap.style.transform = `translateX(0)`;
+            }, 0);
         }
-        --this.options.position;
-        if (this.options.position < 0) {
-            this.options.position = this.slides.length - this.slidesToShow;
-        }
-        this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
     }
 
-    nextSlider() {
-        if (!this.options.infinity && this.options.position >= this.slides.length - this.slidesToShow) {
-            return;
+    nextSlide() {
+        if (!this.options.infinity) {
+            ++this.options.position;
+            this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
+            if (this.options.position >= this.slides.length - this.slidesToShow) {
+                this.next.style.display = 'none';
+            }
+            this.prev.removeAttribute('style');
+        } else {
+            this.wrap.style.transition = `transform 0.5s`;
+            this.wrap.style.transform = `translateX(-${this.options.widthSlide}%)`;
+            setTimeout(() => {
+                this.wrap.append(this.slides[0]);
+                this.wrap.style.transition = `transform 0s`;
+                this.wrap.style.transform = `translateX(0)`;
+            }, 500);
         }
-        ++this.options.position;
-        if (this.options.position > this.slides.length - this.slidesToShow) {
-            this.options.position = 0;
-        }
-        this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
     }
 
     returnSlider() {
@@ -182,11 +212,25 @@ class Slider {
     showArrow() {
         this.prev.removeAttribute('style');
         this.next.removeAttribute('style');
+        this.checkArrow();
     }
 
     hideArrow() {
         this.prev.style.display = 'none';
         this.next.style.display = 'none';
+    }
+
+    checkArrow() {
+        if (!this.options.infinity && this.options.position === 0) {
+            this.prev.style.display = 'none';
+        } else {
+            this.prev.removeAttribute('style');
+        }
+        if (!this.options.infinity && this.options.position === this.slides.length - this.slidesToShow) {
+            this.next.style.display = 'none';
+        } else {
+            this.next.removeAttribute('style');
+        }
     }
 
     responseInit() {
@@ -195,24 +239,29 @@ class Slider {
         const maxResponse = Math.max(...allResponse);
 
         const checkResponse = () => {
-            const widthWindow = document.documentElement.clientWidth;
+            const widthWindow = window.innerWidth;
             if (widthWindow < maxResponse) {
                 for (let i = 0; i < allResponse.length; i++) {
                     if (widthWindow < allResponse[i]) {
                         this.slidesToShow = this.responsive[i].slideToShow;
                         this.options.widthSlide = Math.floor(100 / this.slidesToShow);
-                        this.addStyle();
+                        this.setSlideWidth();
                     }
                 }
             } else {
                 this.slidesToShow = slidesToShowDefault;
                 this.options.widthSlide = Math.floor(100 / this.slidesToShow);
-                this.addStyle();
+                this.setSlideWidth();
             }
+            this.checkArrow();
+            if (this.options.position > this.slides.length - this.slidesToShow) {
+                this.options.position = this.slides.length - this.slidesToShow;
+            }
+            this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
         };
         checkResponse();
 
-        window.addEventListener('resize', checkResponse);
         window.addEventListener('resize', this.initCheck.bind(this));
+        window.addEventListener('resize', checkResponse);
     }
 }
