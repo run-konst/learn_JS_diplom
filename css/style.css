@@ -1690,8 +1690,10 @@ template, [hidden] {
         margin-top: 0;
     }
 
-    .repair-types-nav__item svg {
+    .repair-types-nav__item.button_o svg {
         height: 37px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
@@ -7216,19 +7218,13 @@ div.wave-block:nth-child(17):after {
 
 @media (max-width: 1024px) {
     .nav-list-repair {
-        min-width: 1200px;
+        min-width: auto;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
         max-width: 100%;
-    }
-}
-
-@media (max-width: 575px) {
-    .nav-list-repair {
-        min-width: 1086px;
     }
 }
 

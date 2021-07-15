@@ -10,6 +10,7 @@ import popupPrivacy from './modules/popup-privacy';
 import faqAccordeon from './modules/faq-accordeon';
 import loadDB from './modules/load-DB';
 import advantagesPopup from './modules/advantages-popup';
+import repairTypes from './modules/repair-types';
 
 scroll();
 showHeaderPhone();
@@ -22,3 +23,4 @@ popupPrivacy();
 faqAccordeon();
 loadDB();
 advantagesPopup();
+repairTypes();

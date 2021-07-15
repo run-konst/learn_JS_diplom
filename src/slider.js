@@ -4,10 +4,14 @@ class Slider {
         wrap,
         prev,
         next,
+        pagination,
+        counterCurrent,
+        counterTotal,
         infinity = false,
+        direction = 'horizontal',
         position = 0,
         slidesToShow = 4,
-        initWidth = window.innerWidth,
+        initWidth = window.screen.availWidth,
         responsive = []
     }) {
         this.main = document.querySelector(main);
@@ -15,10 +19,14 @@ class Slider {
         this.slides = document.querySelector(wrap).children;
         this.prev = document.querySelector(prev);
         this.next = document.querySelector(next);
+        this.pagination = document.querySelectorAll(pagination);
+        this.counterCurrent = document.querySelector(counterCurrent);
+        this.counterTotal = document.querySelector(counterTotal);
         this.slidesToShow = slidesToShow;
         this.responsive = responsive;
         this.initWidth = initWidth;
         this.options = {
+            direction,
             position,
             infinity,
             widthSlide: Math.floor(100 / this.slidesToShow)
@@ -28,14 +36,18 @@ class Slider {
 
     init() {
         this.addStyle();
+        if (this.pagination) {
+            this.controlPagination();
+        }
         if (this.prev && this.next) {
-            this.controlSlider();
-        } else {
-            this.addArrow();
             this.controlSlider();
         }
         if (this.responsive) {
             this.responseInit();
+        }
+        if (this.options.direction === 'vertical') {
+            this.wrap.style.flexDirection = 'column';
+            this.wrap.style.height = '100%';
         }
         if (window.innerWidth > this.initWidth) {
             this.die();
@@ -66,7 +78,8 @@ class Slider {
         this.addGloClass();
         this.showArrow();
         this.setSlideWidth();
-        this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
+        this.scrollToPosition();
+        this.initCounter();
     }
 
     die() {
@@ -74,6 +87,14 @@ class Slider {
         this.returnSlider();
         this.hideArrow();
         this.resetSlideWidth();
+    }
+
+    translate() {
+        if (this.options.direction === 'vertical') {
+            return 'translateY';
+        } else {
+            return 'translateX';
+        }
     }
 
     addGloClass() {
@@ -156,10 +177,23 @@ class Slider {
         this.next.addEventListener('click', this.nextSlide.bind(this));
     }
 
+    controlPagination() {
+        this.pagination.forEach((btn, i) => {
+            btn.addEventListener('click', () => {
+                this.options.position = i;
+                this.scrollToPosition();
+            });
+        });
+    }
+
+    scrollToPosition() {
+        this.wrap.style.transform = `${this.translate()}(-${this.options.position * this.options.widthSlide}%)`;
+    }
+
     prevSlide() {
+        --this.options.position;
         if (!this.options.infinity) {
-            --this.options.position;
-            this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
+            this.scrollToPosition();
             if (this.options.position <= 0) {
                 this.prev.style.display = 'none';
             }
@@ -167,36 +201,52 @@ class Slider {
         } else {
             this.wrap.prepend(this.slides[this.slides.length - 1]);
             this.wrap.style.transition = `transform 0s`;
-            this.wrap.style.transform = `translateX(-${this.options.widthSlide}%)`;
+            this.wrap.style.transform = `${this.translate()}(-${this.options.widthSlide}%)`;
             setTimeout(() => {
                 this.wrap.style.transition = `transform 0.5s`;
-                this.wrap.style.transform = `translateX(0)`;
+                this.wrap.style.transform = `${this.translate()}(0)`;
             }, 0);
+            if (this.options.position < 0) {
+                this.options.position = this.slides.length - 1;
+            }
         }
+        this.initCounter();
     }
 
     nextSlide() {
+        ++this.options.position;
         if (!this.options.infinity) {
-            ++this.options.position;
-            this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
+            this.scrollToPosition();
             if (this.options.position >= this.slides.length - this.slidesToShow) {
                 this.next.style.display = 'none';
             }
             this.prev.removeAttribute('style');
         } else {
             this.wrap.style.transition = `transform 0.5s`;
-            this.wrap.style.transform = `translateX(-${this.options.widthSlide}%)`;
+            this.wrap.style.transform = `${this.translate()}(-${this.options.widthSlide}%)`;
             setTimeout(() => {
                 this.wrap.append(this.slides[0]);
                 this.wrap.style.transition = `transform 0s`;
-                this.wrap.style.transform = `translateX(0)`;
+                this.wrap.style.transform = `${this.translate()}(0)`;
             }, 500);
+            if (this.options.position >= this.slides.length) {
+                this.options.position = 0;
+            }
         }
+        this.initCounter();
     }
 
     returnSlider() {
         this.options.position = 0;
         this.wrap.removeAttribute('style');
+    }
+
+    initCounter() {
+        if (!this.counterCurrent || !this.counterTotal) {
+            return;
+        }
+        this.counterCurrent.textContent = this.options.position + 1;
+        this.counterTotal.textContent = this.slides.length;
     }
 
     addArrow() {
@@ -210,17 +260,26 @@ class Slider {
     }
 
     showArrow() {
+        if (!this.next || !this.prev) {
+            return;
+        }
         this.prev.removeAttribute('style');
         this.next.removeAttribute('style');
         this.checkArrow();
     }
 
     hideArrow() {
+        if (!this.next || !this.prev) {
+            return;
+        }
         this.prev.style.display = 'none';
         this.next.style.display = 'none';
     }
 
     checkArrow() {
+        if (!this.next || !this.prev) {
+            return;
+        }
         if (!this.options.infinity && this.options.position === 0) {
             this.prev.style.display = 'none';
         } else {
@@ -257,7 +316,7 @@ class Slider {
             if (this.options.position > this.slides.length - this.slidesToShow) {
                 this.options.position = this.slides.length - this.slidesToShow;
             }
-            this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
+            this.scrollToPosition();
         };
         checkResponse();
 
