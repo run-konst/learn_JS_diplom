@@ -41,14 +41,13 @@ const documents = () => {
     });
     docsPopupSlider.init();
 
-    docsSlider.linkSliders(docsPopupSlider);
     docsPopupSlider.linkSliders(docsSlider);
 
     links.forEach(link => {
         link.addEventListener('click', event => {
             const pos = Array.from(links).indexOf(event.target);
-            docsPopupSlider.options.position = pos;
-            docsPopupSlider.scrollToPosition();
+            docsPopupSlider.goToPositionInfinite(pos);
+            docsPopupSlider.counterCurrent.textContent = pos + 1;
         });
     });
 

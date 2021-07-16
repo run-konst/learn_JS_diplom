@@ -243,6 +243,9 @@ class Slider {
 
     linkSliders(slider) {
         this.prev.addEventListener('click', () => {
+            if (!slider.wrap.classList.contains('glo-slider__wrap')) {
+                return;
+            }
             --slider.options.position;
             slider.wrap.prepend(slider.slides[slider.slides.length - 1]);
             if (slider.options.position < 0) {
@@ -250,12 +253,34 @@ class Slider {
             }
         });
         this.next.addEventListener('click', () => {
+            if (!slider.wrap.classList.contains('glo-slider__wrap')) {
+                return;
+            }
             ++slider.options.position;
             slider.wrap.append(slider.slides[0]);
             if (slider.options.position >= slider.slides.length) {
                 slider.options.position = 0;
             }
         });
+    }
+
+    goToPositionInfinite(pos) {
+        let change = this.options.position - pos;
+        if (change === 0) {
+            return;
+        }
+        if (change < 0) {
+            change *= -1;
+            for (let i = 0; i < change; i++) {
+                ++this.options.position;
+                this.wrap.append(this.slides[0]);
+            }
+        } else {
+            for (let i = 0; i < change; i++) {
+                --this.options.position;
+                this.wrap.prepend(this.slides[this.slides.length - 1]);
+            }
+        }
     }
 
     initCounter() {
