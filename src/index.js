@@ -14,6 +14,7 @@ import repairTypes from './modules/repair-types';
 import documents from './modules/documents';
 import portfolio from './modules/portfolio';
 import reviews from './modules/reviews';
+import services from './modules/services';
 
 scroll();
 showHeaderPhone();
@@ -30,3 +31,4 @@ repairTypes();
 documents();
 portfolio();
 reviews();
+services();

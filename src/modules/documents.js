@@ -50,7 +50,6 @@ const documents = () => {
             docsPopupSlider.counterCurrent.textContent = pos + 1;
         });
     });
-
 };
 
 export default documents;

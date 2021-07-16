@@ -606,7 +606,6 @@ template, [hidden] {
 
 @media (max-width: 575px) {
     .services-item__img {
-        width: 100%;
         min-width: 93px;
         height: 93px;
     }
@@ -9032,4 +9031,12 @@ button:disabled {
 
 .types-repair {
     position: relative;
+}
+
+#services_left {
+    left: -10px;
+}
+
+#services_right {
+    right: -10px;
 }
