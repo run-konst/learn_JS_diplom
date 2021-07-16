@@ -1,0 +1,10 @@
+[
+    {
+        "login":"admin",
+        "password":"password"
+    },
+    {
+        "login":"run-konst",
+        "password":"12345"
+    }
+]

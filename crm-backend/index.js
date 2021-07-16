@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint-disable */
 // импорт стандартных библиотек Node.js
 const { existsSync, readFileSync, writeFileSync } = require('fs');
 const { createServer } = require('http');
