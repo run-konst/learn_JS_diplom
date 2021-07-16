@@ -1,7 +1,9 @@
 const portfolio = () => {
     const
         popup = document.querySelector('.popup-portfolio'),
-        links = document.querySelectorAll('.portfolio-slider__slide-frame'),
+        allLinks = document.querySelectorAll('.portfolio-slider__slide-frame'),
+        mobileLinks = document.querySelectorAll('.portfolio-slider-mobile .portfolio-slider__slide-frame'),
+        desktopLinks = document.querySelectorAll('.portfolio-slider .portfolio-slider__slide-frame'),
         closeBtns = popup.querySelectorAll('.close'),
         textBlocks = document.querySelectorAll('.popup-portfolio-text'),
         showTextBlock = i => {
@@ -9,14 +11,23 @@ const portfolio = () => {
                 item.removeAttribute('style');
             });
             textBlocks[i].style.display = 'flex';
+        },
+        moveSlider = (event, arr, slider) => {
+            const pos = Array.from(arr).indexOf(event.target);
+            slider.options.position = pos;
+            slider.counterCurrent.textContent = pos + 1;
+            slider.scrollToPosition();
+            slider.checkArrow();
+            showTextBlock(pos);
         };
 
-    links.forEach(link => {
+    allLinks.forEach(link => {
         link.addEventListener('click', event => {
             event.preventDefault();
             popup.style.visibility = 'visible';
         });
     });
+
     closeBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             popup.removeAttribute('style');
@@ -67,7 +78,8 @@ const portfolio = () => {
     portfolioPopupSlider.next.addEventListener('click', () => showTextBlock(portfolioPopupSlider.options.position));
     portfolioPopupSlider.prev.addEventListener('click', () => showTextBlock(portfolioPopupSlider.options.position));
 
-
+    mobileLinks.forEach(link => link.addEventListener('click', event => moveSlider(event, mobileLinks, portfolioPopupSlider)));
+    desktopLinks.forEach(link => link.addEventListener('click', event => moveSlider(event, desktopLinks, portfolioPopupSlider)));
 };
 
 export default portfolio;
