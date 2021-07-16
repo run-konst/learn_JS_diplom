@@ -4150,7 +4150,6 @@ div.wave-block:nth-child(17):after {
 
 .reviews-slider {
     height: 314px;
-    overflow: hidden;
 }
 
 .reviews-slider-wrap {
@@ -8212,25 +8211,25 @@ div.wave-block:nth-child(17):after {
 }
 
 #reviews-arrow_left {
-    top: 75%;
-    left: -80px;
+    top: 50%;
+    left: 20px;
 }
 
 @media (max-width: 575px) {
     #reviews-arrow_left {
-        top: 117%;
+        top: 50%;
         left: 55px;
     }
 }
 
 #reviews-arrow_right {
-    top: 75%;
-    right: -80px;
+    top: 50%;
+    right: 20px;
 }
 
 @media (max-width: 575px) {
     #reviews-arrow_right {
-        top: 117%;
+        top: 50%;
         right: 55px;
     }
 }

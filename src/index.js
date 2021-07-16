@@ -13,6 +13,7 @@ import advantagesPopup from './modules/advantages-popup';
 import repairTypes from './modules/repair-types';
 import documents from './modules/documents';
 import portfolio from './modules/portfolio';
+import reviews from './modules/reviews';
 
 scroll();
 showHeaderPhone();
@@ -28,3 +29,4 @@ advantagesPopup();
 repairTypes();
 documents();
 portfolio();
+reviews();
