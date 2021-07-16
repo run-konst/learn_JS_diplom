@@ -241,6 +241,23 @@ class Slider {
         this.wrap.removeAttribute('style');
     }
 
+    linkSliders(slider) {
+        this.prev.addEventListener('click', () => {
+            --slider.options.position;
+            slider.wrap.prepend(slider.slides[slider.slides.length - 1]);
+            if (slider.options.position < 0) {
+                slider.options.position = slider.slides.length - 1;
+            }
+        });
+        this.next.addEventListener('click', () => {
+            ++slider.options.position;
+            slider.wrap.append(slider.slides[0]);
+            if (slider.options.position >= slider.slides.length) {
+                slider.options.position = 0;
+            }
+        });
+    }
+
     initCounter() {
         if (!this.counterCurrent || !this.counterTotal) {
             return;
