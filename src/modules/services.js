@@ -1,5 +1,4 @@
 const services = () => {
-    console.log('asd');
     const servicesSlider = new Slider({
         main: '.services-slider',
         wrap: '.services-slider-wrapper',
