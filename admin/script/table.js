@@ -112,7 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json;charset=utf-8'
                 },
                 body: JSON.stringify(newItem)
-            });
+            })
+                .then(renderFromServer);
         } else if (modalTitle.textContent === 'Редактировать услугу') {
             fetch(`http://localhost:3000/api/items/${patchId}`, {
                 method: 'PATCH',
@@ -120,8 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json;charset=utf-8'
                 },
                 body: JSON.stringify(newItem)
-            });
+            })
+                .then(renderFromServer);
         }
+        modal.removeAttribute('style');
     });
 
     window.addEventListener('click', event => {
@@ -131,7 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const id = event.target.closest('.table__row').querySelector('.table__id').textContent;
             fetch(`http://localhost:3000/api/items/${id}`, {
                 method: 'DELETE',
-            });
+            })
+                .then(renderFromServer);
         }
         if (btnChange) {
             const
