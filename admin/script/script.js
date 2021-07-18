@@ -57,32 +57,3 @@ loginBtn.addEventListener('click', event => {
         .then(checkLogin)
         .catch(() => { console.log('false'); });
 });
-
-// const newObj = {
-//     type: 'Работы',
-//     name: 'Укладка потолка',
-//     units: 'м2',
-//     cost: 200
-// };
-
-// fetch('http://localhost:3000/api/items', {
-//     method: 'POST',
-//     headers: {
-//         'Content-Type': 'application/json;charset=utf-8'
-//     },
-//     body: JSON.stringify(newObj)
-// });
-
-
-// const getData = async () => {
-//     const response = await fetch('http://localhost:3000/api/items');
-//     if (response.status !== 200) {
-//         throw new Error('Network status is not 200');
-//     }
-//     const data = await response.json();
-//     return data;
-// };
-
-// getData()
-//     .then(data => { console.log(data); })
-//     .catch(error => console.error(error));

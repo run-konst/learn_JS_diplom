@@ -1,20 +1,5 @@
 const documents = () => {
-    const
-        popup = document.querySelector('.popup-transparency'),
-        links = document.querySelectorAll('.transparency-item__img'),
-        closeBtns = popup.querySelectorAll('.close');
-
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            popup.style.visibility = 'visible';
-        });
-    });
-
-    closeBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            popup.removeAttribute('style');
-        });
-    });
+    const links = document.querySelectorAll('.transparency-item__img');
 
     const docsSlider = new Slider({
         main: '.transparency-slider-wrap',

@@ -1,10 +1,7 @@
 const portfolio = () => {
     const
-        popup = document.querySelector('.popup-portfolio'),
-        allLinks = document.querySelectorAll('.portfolio-slider__slide-frame'),
         mobileLinks = document.querySelectorAll('.portfolio-slider-mobile .portfolio-slider__slide-frame'),
         desktopLinks = document.querySelectorAll('.portfolio-slider .portfolio-slider__slide-frame'),
-        closeBtns = popup.querySelectorAll('.close'),
         textBlocks = document.querySelectorAll('.popup-portfolio-text'),
         showTextBlock = i => {
             textBlocks.forEach(item => {
@@ -20,19 +17,6 @@ const portfolio = () => {
             slider.checkArrow();
             showTextBlock(pos);
         };
-
-    allLinks.forEach(link => {
-        link.addEventListener('click', event => {
-            event.preventDefault();
-            popup.style.visibility = 'visible';
-        });
-    });
-
-    closeBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            popup.removeAttribute('style');
-        });
-    });
 
     const portfolioSlider = new Slider({
         main: '.portfolio-slider',
